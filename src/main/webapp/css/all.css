@@ -1,0 +1,249 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,300,800);
+
+
+/*************************
+*******Typography******
+**************************/
+
+body {
+  background: #fff;
+  font-family: 'Open Sans', sans-serif;
+  color:#861818;
+  line-height: 22px;
+}
+input{
+  outline: none;
+}
+button{
+  outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600; 
+  font-family: 'Open Sans', sans-serif;
+  color:#4e4e4e;
+}
+
+h1{
+  font-size: 36px;
+  color:#ddd;
+}
+
+h2{
+  font-size: 20px;
+}
+
+h3{
+  font-size: 16px;
+  color: #787878;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+h4{
+  font-size: 16px;
+}
+
+a {
+  /* color: #fff; */
+  cursor: pointer;
+  -webkit-transition: color 300ms, background-color 300ms;
+  -moz-transition: color 300ms, background-color 300ms;
+  -o-transition:  color 300ms, background-color 300ms;
+  transition:  color 300ms, background-color 300ms;
+  font-family: "微软雅黑";
+}
+img{
+  cursor: pointer; 
+  transition: all 0.6s;
+}
+img:hover{
+  transform: scale(1.1); 
+}
+
+a:hover, a:focus {
+  color: #d43133;
+}
+
+hr {
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #fff;
+}
+
+/*header输入框*/
+.col-lg-6{
+  padding-top:13px;
+  padding-left:130px;
+  width:530px;
+}
+.input-group input{
+  outline: none;
+  padding:0 5px;
+  border: 0 none;
+  border: 2px solid #6f0a0a;
+}
+.form-control:focus {
+    /*这里改成了绿色*/
+    border-color: #6f0a0a;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+}
+.btn{
+  padding: 5px 12px 5px 12px;
+  color: #fff;
+  background-color: #6f0a0a;
+}
+.btn:hover,.btn:focus,.btn:active{color:#6f0a0a;background: #fff;border-color: #6f0a0a;}
+.input-group button{
+  outline: none;
+  border: 2px solid #6f0a0a;
+}
+.btn:focus{outline:0;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}
+.btn-default:hover,.btn-default:focus,.btn-default:active,.btn-default.active,.open .dropdown-toggle.btn-default{
+    color:#6f0a0a;
+    background-color:#fff;
+    border-color:#6f0a0a;
+  }
+
+.logreg{
+  padding-left: 990px;
+  padding-top: 16px;
+}
+.logreg span{
+    font-size: 18px;
+    color: white;
+}
+.logreg span:hover{
+  color: #6f0a0a;
+}
+.login{
+  padding-right: 3px;
+}
+.reg{
+  padding-left: 3px;
+}
+
+.navbar-collapse{
+  background-color: #6f0a0a;
+  color: #fff;
+}
+.navbar-collapse.collapse{
+  height: 50px;
+  font-size: 15px;
+}
+
+.navbar {
+  border-radius: 0;
+  margin-bottom: 0;
+  background:gray;
+  padding: 15px 0;
+  padding-bottom: 15px;
+}
+.navbar-inverse {
+  border: none;
+}
+
+.navbar-inverse .navbar-brand {
+  font-size: 36px;
+  line-height: 50px;
+  color: #fff;
+}
+.navbar-brand {
+  padding: 0;
+  margin:0;
+}
+ .navbar-nav{
+  padding-left : 300px;
+  color: white;
+ }
+
+.navbar-nav>li{
+  margin-left: 35px;
+  padding-bottom: 28px;
+}
+.navbar-inverse .navbar-nav > li > a {
+  padding: 5px 12px;
+  margin: 0;
+  border-radius: 3px;
+  color: #fff;
+  line-height: 24px;
+  display: inline-block;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover{
+  background-color: #c52d2f;
+  color: #fff;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+a:-webkit-any-link {
+    color: white;
+    cursor: auto;
+}
+
+/***********************
+********* Footer ******
+************************/
+#footer {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: #fff;
+  background: #2e2e2e;
+  height: 180px;
+}
+
+.col-sm-3{
+  border-right: 1px solid #434343;
+}
+.breadcrumb > li + li:before {
+    color: #CCCCCC;
+    content: "| ";
+    padding: 0 5px;
+}
+.breadcrumb{
+  padding: 8px 25px;
+}
+.col-sm-7 span{
+  margin-left: 26px;
+}
+.col-sm-4{
+  position: absolute;
+  padding-left: 1000px;
+}
+.footbar{
+  padding: 20px;
+}
+.footico{
+  height: 105px;
+  width: 200px;
+  padding-left: 100px;
+}
+.fenge span{
+  height: 105px;
+  width: 2px;
+  background-color: gray;
+}
+#footer {
+  color: #c5c5c5;
+}
+
+#footer a:hover {
+  color: #c52d2f;
+}
+
+#footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#footer ul > li {
+  display: inline-block;
+  margin-left: 15px;
+}

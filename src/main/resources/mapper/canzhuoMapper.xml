@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.bojue.mapper.CanzhuoMapper">
+    <resultMap id="BaseResultMap" type="com.cn.bojue.pojo.Canzhuo">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="cz_no" jdbcType="VARCHAR" property="czNo" />
+        <result column="cz_name" jdbcType="VARCHAR" property="czName" />
+        <result column="cz_res" jdbcType="VARCHAR" property="czRes" />
+        <result column="cz_type" jdbcType="VARCHAR" property="czType" />
+        <result column="cz_spec" jdbcType="VARCHAR" property="czSpec" />
+        <result column="cz_num" jdbcType="INTEGER" property="czNum" />
+        <result column="cz_color" jdbcType="VARCHAR" property="czColor" />
+        <result column="cz_price" jdbcType="INTEGER" property="czPrice" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, cz_no, cz_name, cz_res, cz_type, cz_spec, cz_num, cz_color, cz_price
+    </sql>
+    <sql id="Blob_Column_List">
+    cz_des
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM canzhuo
+        WHERE id = #{id, jdbcType = INTEGER}
+    </select>
+    <select id="selectByType" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        *
+        FROM canzhuo
+        WHERE cz_type = #{type,jdbcType = VARCHAR}
+    </select>
+</mapper>
