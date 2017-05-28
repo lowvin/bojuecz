@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>首页</title>
+    <script type="text/javascript" src="js/angularJS/angular.js"></script>
+    <script type="text/javascript" src="js/controller/content.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="css/animate.min.css">
+    <link type="text/css" rel="stylesheet" href="css/prettyPhoto.css">
+    <link type="text/css" rel="stylesheet" href="css/responsive.css">
+    <link type="text/css" rel="stylesheet" href="css/main.css">
+    <link type="text/css" rel="stylesheet" href="css/all.css">
+    <link type="text/css" rel="stylesheet" href="css/content.css">
+
+    <link rel="shortcut icon" href="images/ico/bojue.png">
+</head>
+<body class="homepage" ng-app="content" ng-controller="cont">
+	<header id="header" data-ng-init="load()">
+		<nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="images/icos/logo.png" alt="logo"></a>
+                </div>
+				<div class="col-lg-6">
+					<div class="input-group">
+						<input type="text" class="form-control search_text" autocomplete="off">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button">
+								搜索
+							</button>
+						</span>
+					</div><!-- /input-group -->
+				</div>
+				<div class="logreg">
+					<a><span class="login">登录</span></a><span>|</span><a><span class="reg">注册</span></a>
+				</div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+	</header>
+	<banner>
+	    <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">首页</a></li>
+                <li><a href="about-us.html">电动餐桌</a></li>
+                <li><a href="services.html">手动餐桌</a></li>
+                <li><a href="portfolio.html">餐桌配件</a></li>
+                <li><a href="blog.html">关于我们</a></li> 
+                <li><a href="contact-us.html">联系我们</a></li>                        
+            </ul>
+        </div>
+	</banner>
+    
+	<section id="main-slider" class="no-margin">
+        <div class="carousel slide" data-ride="carousel" data-interval="2000">
+            <ol class="carousel-indicators">
+                <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+                <li data-target="#main-slider" data-slide-to="1"></li>
+                <li data-target="#main-slider" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+
+                <div class="item active" style="background-image: url(images/canz/timg01.jpg)">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-sm-6">
+                                <div class="carousel-content">
+                                    <h2 class="animation animated-item-1">传承华夏文化五千年</h2>
+                                    <h2 class="animation animated-item-2">缔造电动餐桌新经典</h2>
+                                </div>
+                            </div>                
+                        </div>
+                    </div>
+                </div><!--/.item-->
+
+                <div class="item" style="background-image: url(images/canz/timg.jpg)">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-lg-6" style="height: 100px;width: 100px;">
+                                <div class="col-content">
+                                    <h2 class="animation animated-item-1">尊贵气息</h2>
+                                    <h2 class="animation animated-item-2">就在那精雕细琢的萦回中</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+
+                <div class="item" style="background-image: url(images/canz/timg03.jpg)">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-lg-6" style="height: 100px;width: 100px;">
+                                <div class="col-content">
+                                    <h2 class="animation animated-item-1">古典风格</h2>
+                                    <h2 class="animation animated-item-2">尽在那独具匠心的设计时</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+        <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <a class="next hidden-xs" href="#main-slider" data-slide="next">
+            <i class="fa fa-chevron-right"></i>
+        </a>
+    </section><!--/#main-slider-->
+    <section>
+        <div class="typecon">
+            <span class=" type col-md-12">产品类别</span>
+            <span class=" type_name col-md-14">豪华电动餐桌</span>
+        </div>
+		<div class="line">
+			<div class="linesan">
+            <span></span>
+            <div class="weizhi">
+                <p>当前位置：<a>首页</a>&nbsp&gt&nbsp豪华实木电动餐桌</p>
+            </div>
+		</div>
+    </section>
+    <section id="feature" class="featop">
+        <div class="container">
+            <div class="center wow fadeInDown">
+                <span>电动餐桌</span>
+            </div>
+		    <div class="linecen">
+		    	<span></span>
+                <a class="more">
+                    <img src="images/icos/more.gif">
+                </a>
+		    </div>
+            <div class="row">
+                <div class="features">
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <a><img src="images/canzhuo/A-062.png"/></a>
+                            <div class="bianhao">
+                                <a>WT-025# 锦绣中华</a>
+                            </div>
+                            <div class="miaoshu">
+                                <span>全橡木纯手工雕花 自动宴会桌</span>
+                            </div>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <a><img src="images/canzhuo/A-063.png"/></a>
+                            <div class="bianhao">
+                                <a>WT-025# 锦绣中华</a>
+                            </div>
+                            <div class="miaoshu">
+                                <span>全橡木纯手工雕花 自动宴会桌</span>
+                            </div>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <a><img src="images/canzhuo/A-064.png"/></a>
+                            <div class="bianhao">
+                                <a>WT-025# 锦绣中华</a>
+                            </div>
+                            <div class="miaoshu">
+                                <span>全橡木纯手工雕花 自动宴会桌</span>
+                            </div>
+                        </div>
+                    </div><!--/.col-md-4-->
+                
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <a><img src="images/canzhuo/A-060.png"/></a>
+                            <div class="bianhao">
+                                <a>WT-025# 锦绣中华</a>
+                            </div>
+                            <div class="miaoshu">
+                                <span>全橡木纯手工雕花 自动宴会桌</span>
+                            </div>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <a><img src="images/canzhuo/A-061.png"/></a>
+                            <div class="bianhao">
+                                <a>WT-025# 锦绣中华</a>
+                            </div>
+                            <div class="miaoshu">
+                                <span>全橡木纯手工雕花 自动宴会桌</span>
+                            </div>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <a><img src="images/canzhuo/A-065.png"/></a>
+                            <div class="bianhao">
+                                <a>WT-025# 锦绣中华</a>
+                            </div>
+                            <div class="miaoshu">
+                                <span>全橡木纯手工雕花 自动宴会桌</span>
+                            </div>
+                        </div>
+                    </div><!--/.col-md-4-->
+                </div><!--/.services-->
+            </div><!--/.row-->    
+        </div><!--/.container-->
+    </section><!--/#feature-->
+
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <img src="images/icos/bjcz.png">
+                </div>
+                <div class="col-sm-7">
+                    <ul class="footbar">
+                        <ol class="breadcrumb">
+                            <li><a href="#">首页</a></li>
+                            <li><a href="#">电动餐桌</a></li>
+                            <li><a href="#">手动餐桌</a></li>
+                            <li><a href="#">餐桌配件</a></li>
+                            <li><a href="#">关于我们</a></li>
+                            <li><a href="#">联系我们</a></li>
+                        </ol>
+                    </ul>
+                </div>
+                <div class="col-sm-7">
+                        <span>Copyright © 2017 宁夏银川伯爵酒店家具有限公司</span> 
+                        <span>版权所有</span>
+                        <span>宁ICP备16003438号-2</span>
+                </div>
+                <div class="col-sm-7">
+                        <span>商务热线：15595522669（罗）&nbsp&nbsp&nbsp&nbsp18792991998（罗）</span> 
+                        <span>QQ：1196369615</span>
+                </div>
+                <div class="col-sm-7">
+                        <span>公司地址：宁夏回族自治区银川市永宁县兴庆区长湖十队</span> 
+                </div>
+                <div class="col-sm-4">
+                    <img src="images/icos/weixin.jpg">
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl',['$scope', function($scope){  
+            $scope.load = function (){
+            }
+        }]);
+    </script>
+	<script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wow.min.js"></script>
+</body>
+</html>

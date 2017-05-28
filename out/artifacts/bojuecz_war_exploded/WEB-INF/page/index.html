@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>首页</title>
+    <script type="text/javascript" src="js/angularJS/angular.js"></script>
+    <script type="text/javascript" src="js/controller/index.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="css/animate.min.css">
+    <link type="text/css" rel="stylesheet" href="css/prettyPhoto.css">
+    <link type="text/css" rel="stylesheet" href="css/responsive.css">
+    <link type="text/css" rel="stylesheet" href="css/main.css">
+    <link type="text/css" rel="stylesheet" href="css/all.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="images/ico/bojue.png">
+</head>
+<body class="homepage" ng-app="index" ng-controller="myCtrl">
+<header id="header" data-ng-init="load()">
+    <nav class="navbar navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="images/icos/logo.png" alt="logo"></a>
+            </div>
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <input type="text" class="form-control search_text" autocomplete="off">
+                    <span class="input-group-btn">
+							<button class="btn btn-default" type="button">
+								搜索
+							</button>
+						</span>
+                </div><!-- /input-group -->
+            </div>
+            <div class="logreg">
+                <a href="/bojue/login"><span class="login">登录</span></a><span>|</span><a><span class="reg">注册</span></a>
+            </div>
+        </div><!--/.container-->
+    </nav><!--/nav-->
+</header>
+<banner>
+    <div id="banner" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html">首页</a></li>
+            <li><a href="about-us.html">电动餐桌</a></li>
+            <li><a href="services.html">手动餐桌</a></li>
+            <li><a href="portfolio.html">餐桌配件</a></li>
+            <li><a href="blog.html">关于我们</a></li>
+            <li><a href="contact-us.html">联系我们</a></li>
+        </ul>
+    </div>
+</banner>
+
+<section id="main-slider" class="no-margin">
+    <div class="carousel slide" data-ride="carousel" data-interval="5000">
+        <ol class="carousel-indicators">
+            <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+            <li data-target="#main-slider" data-slide-to="1"></li>
+            <li data-target="#main-slider" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+
+            <div class="item active" style="background-image: url(images/canz/timg.jpg)">
+                <div class="container">
+                    <div class="row slide-margin">
+                        <div class="col-sm-6">
+                            <div class="carousel-content">
+                                <h2 class="animation animated-item-1">传承华夏文化五千年</h2>
+                                <h2 class="animation animated-item-2">缔造电动餐桌新经典</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.item-->
+
+            <div class="item" style="background-image: url(images/canz/timg03.jpg)">
+                <div class="container">
+                    <div class="row slide-margin">
+                        <div class="col-lg-6" style="height: 100px;width: 100px;">
+                            <div class="col-content">
+                                <h2 class="animation animated-item-1">尊贵气息</h2>
+                                <h2 class="animation animated-item-2">就在那精雕细琢的萦回中</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.item-->
+
+            <div class="item" style="background-image: url(images/canz/timg01.jpg)">
+                <div class="container">
+                    <div class="row slide-margin">
+                        <div class="col-lg-6" style="height: 100px;width: 100px;">
+                            <div class="col-content">
+                                <h2 class="animation animated-item-1">古典风格</h2>
+                                <h2 class="animation animated-item-2">尽在那独具匠心的设计时</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.item-->
+        </div><!--/.carousel-inner-->
+    </div><!--/.carousel-->
+    <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
+        <i class="fa fa-chevron-left"></i>
+    </a>
+    <a class="next hidden-xs" href="#main-slider" data-slide="next">
+        <i class="fa fa-chevron-right"></i>
+    </a>
+</section><!--/#main-slider-->
+
+<section id="feature1" class="featop">
+    <div class="container">
+        <div class="center wow fadeInDown">
+            <span>电动餐桌</span>
+        </div>
+        <div class="linecen">
+            <span></span>
+            <a class="more" href="/bojue/content">
+                <img src="images/icos/more.gif">
+            </a>
+        </div>
+        <div class="row">
+            <div class="features" ng-repeat="a in diandong">
+                <div class="col-md-4 col-sm-6 wow animated fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="feature-wrap">
+                        <a><img src="images/canzhuo/{{a.czNo}}.png"/></a>
+                        <div class="bianhao">
+                            <a>{{a.czNo}}# {{a.czName}}</a>
+                        </div>
+                        <div class="miaoshu">
+                            <span>{{a.czRes}}</span>
+                        </div>
+                    </div>
+                </div><!--/.col-md-4-->
+            </div><!--/.services-->
+        </div><!--/.row-->
+    </div><!--/.container-->
+</section><!--/#feature-->
+<section id="feature2" class="featop">
+    <div class="container">
+        <div class="center wow fadeInDown">
+            <span>手动餐桌</span>
+        </div>
+        <div class="linecen">
+            <span></span>
+            <a class="more">
+                <img src="images/icos/more.gif">
+            </a>
+        </div>
+        <div class="row">
+            <div class="features" ng-repeat="a in shoudong">
+                <div class="col-md-4 col-sm-6 wow animated fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="feature-wrap">
+                        <a><img src="images/canzhuo/{{a.czNo}}.png"/></a>
+                        <div class="bianhao">
+                            <a>{{a.czNo}}# {{a.czName}}</a>
+                        </div>
+                        <div class="miaoshu">
+                            <span>{{a.czRes}}</span>
+                        </div>
+                    </div>
+                </div><!--/.col-md-4-->
+            </div><!--/.services-->
+        </div><!--/.row-->
+    </div><!--/.container-->
+</section><!--/#feature-->
+<section id="feature3" class="featop">
+    <div class="container">
+        <div class="center wow fadeInDown">
+            <span>餐桌配件</span>
+        </div>
+        <div class="linecen">
+            <span></span>
+            <a class="more">
+                <img src="images/icos/more.gif">
+            </a>
+        </div>
+        <div class="row">
+            <div class="features">
+                <div class="col-md-2 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="feature-wrap">
+                        <a><img src="images/canzhuo/A-077.png"/></a>
+                        <div class="bianhao">
+                            <a>WT-025# 锦绣中华</a>
+                        </div>
+                        <div class="miaoshu">
+                            <span>全橡木纯手工雕花 自动宴会桌</span>
+                        </div>
+                    </div>
+                </div><!--/.col-md-4-->
+
+                <div class="col-md-2 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="feature-wrap">
+                        <a><img src="images/canzhuo/A-079.png"/></a>
+                        <div class="bianhao">
+                            <a>WT-025# 锦绣中华</a>
+                        </div>
+                        <div class="miaoshu">
+                            <span>全橡木纯手工雕花 自动宴会桌</span>
+                        </div>
+                    </div>
+                </div><!--/.col-md-4-->
+
+                <div class="col-md-2 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="feature-wrap">
+                        <a><img src="images/canzhuo/A-078.png"/></a>
+                        <div class="bianhao">
+                            <a>WT-025# 锦绣中华</a>
+                        </div>
+                        <div class="miaoshu">
+                            <span>全橡木纯手工雕花 自动宴会桌</span>
+                        </div>
+                    </div>
+                </div><!--/.col-md-4-->
+
+                <div class="col-md-2 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="feature-wrap">
+                        <a><img src="images/canzhuo/A-080.png"/></a>
+                        <div class="bianhao">
+                            <a>WT-025# 锦绣中华</a>
+                        </div>
+                        <div class="miaoshu">
+                            <span>全橡木纯手工雕花 自动宴会桌</span>
+                        </div>
+                    </div>
+                </div><!--/.col-md-4-->
+
+                <div class="col-md-2 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="feature-wrap">
+                        <a><img src="images/canzhuo/A-081.png"/></a>
+                        <div class="bianhao">
+                            <a>WT-025# 锦绣中华</a>
+                        </div>
+                        <div class="miaoshu">
+                            <span>全橡木纯手工雕花 自动宴会桌</span>
+                        </div>
+                    </div>
+                </div><!--/.col-md-4-->
+
+                <div class="col-md-2 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="feature-wrap">
+                        <a><img src="images/canzhuo/A-082.png"/></a>
+                        <div class="bianhao">
+                            <a>WT-025# 锦绣中华</a>
+                        </div>
+                        <div class="miaoshu">
+                            <span>全橡木纯手工雕花 自动宴会桌</span>
+                        </div>
+                    </div>
+                </div><!--/.col-md-4-->
+            </div><!--/.services-->
+        </div><!--/.row-->
+    </div><!--/.container-->
+</section><!--/#feature-->
+
+<section id="services" class="service-item">
+    <div class="container">
+        <div class="center wow fadeInDown">
+            <h1>我们的服务</h1>
+        </div>
+        <div class="row">
+
+            <div class="col-sm-6 col-md-4">
+                <div class="media services-wrap wow fadeInDown">
+                    <div class="pull-left">
+                        <img class="img-responsive" src="images/services/services1.png">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">安全包装</h3>
+                        <p>餐桌各个部件都用包装纸和泡沫来进行包装以确保餐桌不被损坏</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                <div class="media services-wrap wow fadeInDown">
+                    <div class="pull-left">
+                        <img class="img-responsive" src="images/services/services2.png">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">及时配送</h3>
+                        <p>在您约定的时间内到您指定的地点送货上门</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                <div class="media services-wrap wow fadeInDown">
+                    <div class="pull-left">
+                        <img class="img-responsive" src="images/services/services3.png">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">现场安装</h3>
+                        <p>可以按照您的要求到现场安装餐桌</p>
+                    </div>
+                </div>
+            </div>
+        </div><!--/.row-->
+    </div><!--/.container-->
+</section><!--/#services-->
+
+<footer id="footer" class="midnight-blue">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <img src="images/icos/bjcz.png">
+            </div>
+            <div class="col-sm-7">
+                <ul class="footbar">
+                    <ol class="breadcrumb">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">电动餐桌</a></li>
+                        <li><a href="#">手动餐桌</a></li>
+                        <li><a href="#">餐桌配件</a></li>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ol>
+                </ul>
+            </div>
+            <div class="col-sm-7">
+                <span>Copyright © 2017 宁夏银川伯爵酒店家具有限公司</span>
+                <span>版权所有</span>
+                <span>宁ICP备16003438号-2</span>
+            </div>
+            <div class="col-sm-7">
+                <span>商务热线：15595522669（罗）&nbsp&nbsp&nbsp&nbsp18792991998（罗）</span>
+                <span>QQ：1196369615</span>
+            </div>
+            <div class="col-sm-7">
+                <span>公司地址：宁夏回族自治区银川市永宁县兴庆区长湖十队</span>
+            </div>
+            <div class="col-sm-4">
+                <img src="images/icos/weixin.jpg">
+            </div>
+        </div>
+    </div>
+</footer><!--/#footer-->
+<!--qq聊天代码部分begin-->
+<div class="izl-rmenu">
+    <a class="consult" target="_blank"><div class="phone" style="display:none;">13552320980</div></a>
+    <a class="cart"><div class="pic"></div></a>
+    <a href="javascript:void(0)" class="btn_top" style="display: block;"></a>
+</div>
+<a target="_blank"  href="http://wpa.qq.com/msgrd?v=3&uin=1196369615&site=qq&menu=yes" id="udesk-feedback-tab" class="udesk-feedback-tab-left" style="display: block; background-color: black;"></a>
+<!--qq聊天代码部分end-->
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+<script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
+</body>
+</html>

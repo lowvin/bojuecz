@@ -1,0 +1,2356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.bojue.mapper.CanzhuoMapper">
+  <resultMap id="BaseResultMap" type="com.cn.bojue.pojo.Canzhuo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cz_no" jdbcType="VARCHAR" property="czNo" />
+    <result column="cz_name" jdbcType="VARCHAR" property="czName" />
+    <result column="cz_res" jdbcType="VARCHAR" property="czRes" />
+    <result column="cz_type" jdbcType="VARCHAR" property="czType" />
+    <result column="cz_spec" jdbcType="VARCHAR" property="czSpec" />
+    <result column="cz_num" jdbcType="INTEGER" property="czNum" />
+    <result column="cz_color" jdbcType="VARCHAR" property="czColor" />
+    <result column="cz_price" jdbcType="INTEGER" property="czPrice" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.cn.bojue.pojo.Canzhuo">
+    <result column="cz_des" jdbcType="LONGVARCHAR" property="czDes" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, cz_no, cz_name, cz_res, cz_type, cz_spec, cz_num, cz_color, cz_price
+  </sql>
+  <sql id="Blob_Column_List">
+    cz_des
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from canzhuo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from canzhuo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample">
+    delete from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.cn.bojue.pojo.Canzhuo">
+    insert into canzhuo (id, cz_no, cz_name, 
+      cz_res, cz_type, cz_spec, 
+      cz_num, cz_color, cz_price, 
+      cz_des)
+    values (#{id,jdbcType=INTEGER}, #{czNo,jdbcType=VARCHAR}, #{czName,jdbcType=VARCHAR}, 
+      #{czRes,jdbcType=VARCHAR}, #{czType,jdbcType=VARCHAR}, #{czSpec,jdbcType=VARCHAR}, 
+      #{czNum,jdbcType=INTEGER}, #{czColor,jdbcType=VARCHAR}, #{czPrice,jdbcType=INTEGER}, 
+      #{czDes,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.bojue.pojo.Canzhuo">
+    insert into canzhuo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="czNo != null">
+        cz_no,
+      </if>
+      <if test="czName != null">
+        cz_name,
+      </if>
+      <if test="czRes != null">
+        cz_res,
+      </if>
+      <if test="czType != null">
+        cz_type,
+      </if>
+      <if test="czSpec != null">
+        cz_spec,
+      </if>
+      <if test="czNum != null">
+        cz_num,
+      </if>
+      <if test="czColor != null">
+        cz_color,
+      </if>
+      <if test="czPrice != null">
+        cz_price,
+      </if>
+      <if test="czDes != null">
+        cz_des,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="czNo != null">
+        #{czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="czName != null">
+        #{czName,jdbcType=VARCHAR},
+      </if>
+      <if test="czRes != null">
+        #{czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="czType != null">
+        #{czType,jdbcType=VARCHAR},
+      </if>
+      <if test="czSpec != null">
+        #{czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="czNum != null">
+        #{czNum,jdbcType=INTEGER},
+      </if>
+      <if test="czColor != null">
+        #{czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="czPrice != null">
+        #{czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="czDes != null">
+        #{czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultType="java.lang.Integer">
+    select count(*) from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update canzhuo
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.czNo != null">
+        cz_no = #{record.czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czName != null">
+        cz_name = #{record.czName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czRes != null">
+        cz_res = #{record.czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czType != null">
+        cz_type = #{record.czType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czSpec != null">
+        cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czNum != null">
+        cz_num = #{record.czNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.czColor != null">
+        cz_color = #{record.czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czPrice != null">
+        cz_price = #{record.czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="record.czDes != null">
+        cz_des = #{record.czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update canzhuo
+    set id = #{record.id,jdbcType=INTEGER},
+      cz_no = #{record.czNo,jdbcType=VARCHAR},
+      cz_name = #{record.czName,jdbcType=VARCHAR},
+      cz_res = #{record.czRes,jdbcType=VARCHAR},
+      cz_type = #{record.czType,jdbcType=VARCHAR},
+      cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      cz_num = #{record.czNum,jdbcType=INTEGER},
+      cz_color = #{record.czColor,jdbcType=VARCHAR},
+      cz_price = #{record.czPrice,jdbcType=INTEGER},
+      cz_des = #{record.czDes,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update canzhuo
+    set id = #{record.id,jdbcType=INTEGER},
+      cz_no = #{record.czNo,jdbcType=VARCHAR},
+      cz_name = #{record.czName,jdbcType=VARCHAR},
+      cz_res = #{record.czRes,jdbcType=VARCHAR},
+      cz_type = #{record.czType,jdbcType=VARCHAR},
+      cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      cz_num = #{record.czNum,jdbcType=INTEGER},
+      cz_color = #{record.czColor,jdbcType=VARCHAR},
+      cz_price = #{record.czPrice,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    <set>
+      <if test="czNo != null">
+        cz_no = #{czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="czName != null">
+        cz_name = #{czName,jdbcType=VARCHAR},
+      </if>
+      <if test="czRes != null">
+        cz_res = #{czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="czType != null">
+        cz_type = #{czType,jdbcType=VARCHAR},
+      </if>
+      <if test="czSpec != null">
+        cz_spec = #{czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="czNum != null">
+        cz_num = #{czNum,jdbcType=INTEGER},
+      </if>
+      <if test="czColor != null">
+        cz_color = #{czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="czPrice != null">
+        cz_price = #{czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="czDes != null">
+        cz_des = #{czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    set cz_no = #{czNo,jdbcType=VARCHAR},
+      cz_name = #{czName,jdbcType=VARCHAR},
+      cz_res = #{czRes,jdbcType=VARCHAR},
+      cz_type = #{czType,jdbcType=VARCHAR},
+      cz_spec = #{czSpec,jdbcType=VARCHAR},
+      cz_num = #{czNum,jdbcType=INTEGER},
+      cz_color = #{czColor,jdbcType=VARCHAR},
+      cz_price = #{czPrice,jdbcType=INTEGER},
+      cz_des = #{czDes,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    set cz_no = #{czNo,jdbcType=VARCHAR},
+      cz_name = #{czName,jdbcType=VARCHAR},
+      cz_res = #{czRes,jdbcType=VARCHAR},
+      cz_type = #{czType,jdbcType=VARCHAR},
+      cz_spec = #{czSpec,jdbcType=VARCHAR},
+      cz_num = #{czNum,jdbcType=INTEGER},
+      cz_color = #{czColor,jdbcType=VARCHAR},
+      cz_price = #{czPrice,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.cn.bojue.pojo.Canzhuo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cz_no" jdbcType="VARCHAR" property="czNo" />
+    <result column="cz_name" jdbcType="VARCHAR" property="czName" />
+    <result column="cz_res" jdbcType="VARCHAR" property="czRes" />
+    <result column="cz_type" jdbcType="VARCHAR" property="czType" />
+    <result column="cz_spec" jdbcType="VARCHAR" property="czSpec" />
+    <result column="cz_num" jdbcType="INTEGER" property="czNum" />
+    <result column="cz_color" jdbcType="VARCHAR" property="czColor" />
+    <result column="cz_price" jdbcType="INTEGER" property="czPrice" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.cn.bojue.pojo.Canzhuo">
+    <result column="cz_des" jdbcType="LONGVARCHAR" property="czDes" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, cz_no, cz_name, cz_res, cz_type, cz_spec, cz_num, cz_color, cz_price
+  </sql>
+  <sql id="Blob_Column_List">
+    cz_des
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from canzhuo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from canzhuo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample">
+    delete from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.cn.bojue.pojo.Canzhuo">
+    insert into canzhuo (id, cz_no, cz_name, 
+      cz_res, cz_type, cz_spec, 
+      cz_num, cz_color, cz_price, 
+      cz_des)
+    values (#{id,jdbcType=INTEGER}, #{czNo,jdbcType=VARCHAR}, #{czName,jdbcType=VARCHAR}, 
+      #{czRes,jdbcType=VARCHAR}, #{czType,jdbcType=VARCHAR}, #{czSpec,jdbcType=VARCHAR}, 
+      #{czNum,jdbcType=INTEGER}, #{czColor,jdbcType=VARCHAR}, #{czPrice,jdbcType=INTEGER}, 
+      #{czDes,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.bojue.pojo.Canzhuo">
+    insert into canzhuo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="czNo != null">
+        cz_no,
+      </if>
+      <if test="czName != null">
+        cz_name,
+      </if>
+      <if test="czRes != null">
+        cz_res,
+      </if>
+      <if test="czType != null">
+        cz_type,
+      </if>
+      <if test="czSpec != null">
+        cz_spec,
+      </if>
+      <if test="czNum != null">
+        cz_num,
+      </if>
+      <if test="czColor != null">
+        cz_color,
+      </if>
+      <if test="czPrice != null">
+        cz_price,
+      </if>
+      <if test="czDes != null">
+        cz_des,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="czNo != null">
+        #{czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="czName != null">
+        #{czName,jdbcType=VARCHAR},
+      </if>
+      <if test="czRes != null">
+        #{czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="czType != null">
+        #{czType,jdbcType=VARCHAR},
+      </if>
+      <if test="czSpec != null">
+        #{czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="czNum != null">
+        #{czNum,jdbcType=INTEGER},
+      </if>
+      <if test="czColor != null">
+        #{czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="czPrice != null">
+        #{czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="czDes != null">
+        #{czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultType="java.lang.Integer">
+    select count(*) from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update canzhuo
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.czNo != null">
+        cz_no = #{record.czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czName != null">
+        cz_name = #{record.czName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czRes != null">
+        cz_res = #{record.czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czType != null">
+        cz_type = #{record.czType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czSpec != null">
+        cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czNum != null">
+        cz_num = #{record.czNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.czColor != null">
+        cz_color = #{record.czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czPrice != null">
+        cz_price = #{record.czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="record.czDes != null">
+        cz_des = #{record.czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update canzhuo
+    set id = #{record.id,jdbcType=INTEGER},
+      cz_no = #{record.czNo,jdbcType=VARCHAR},
+      cz_name = #{record.czName,jdbcType=VARCHAR},
+      cz_res = #{record.czRes,jdbcType=VARCHAR},
+      cz_type = #{record.czType,jdbcType=VARCHAR},
+      cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      cz_num = #{record.czNum,jdbcType=INTEGER},
+      cz_color = #{record.czColor,jdbcType=VARCHAR},
+      cz_price = #{record.czPrice,jdbcType=INTEGER},
+      cz_des = #{record.czDes,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update canzhuo
+    set id = #{record.id,jdbcType=INTEGER},
+      cz_no = #{record.czNo,jdbcType=VARCHAR},
+      cz_name = #{record.czName,jdbcType=VARCHAR},
+      cz_res = #{record.czRes,jdbcType=VARCHAR},
+      cz_type = #{record.czType,jdbcType=VARCHAR},
+      cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      cz_num = #{record.czNum,jdbcType=INTEGER},
+      cz_color = #{record.czColor,jdbcType=VARCHAR},
+      cz_price = #{record.czPrice,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    <set>
+      <if test="czNo != null">
+        cz_no = #{czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="czName != null">
+        cz_name = #{czName,jdbcType=VARCHAR},
+      </if>
+      <if test="czRes != null">
+        cz_res = #{czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="czType != null">
+        cz_type = #{czType,jdbcType=VARCHAR},
+      </if>
+      <if test="czSpec != null">
+        cz_spec = #{czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="czNum != null">
+        cz_num = #{czNum,jdbcType=INTEGER},
+      </if>
+      <if test="czColor != null">
+        cz_color = #{czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="czPrice != null">
+        cz_price = #{czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="czDes != null">
+        cz_des = #{czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    set cz_no = #{czNo,jdbcType=VARCHAR},
+      cz_name = #{czName,jdbcType=VARCHAR},
+      cz_res = #{czRes,jdbcType=VARCHAR},
+      cz_type = #{czType,jdbcType=VARCHAR},
+      cz_spec = #{czSpec,jdbcType=VARCHAR},
+      cz_num = #{czNum,jdbcType=INTEGER},
+      cz_color = #{czColor,jdbcType=VARCHAR},
+      cz_price = #{czPrice,jdbcType=INTEGER},
+      cz_des = #{czDes,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    set cz_no = #{czNo,jdbcType=VARCHAR},
+      cz_name = #{czName,jdbcType=VARCHAR},
+      cz_res = #{czRes,jdbcType=VARCHAR},
+      cz_type = #{czType,jdbcType=VARCHAR},
+      cz_spec = #{czSpec,jdbcType=VARCHAR},
+      cz_num = #{czNum,jdbcType=INTEGER},
+      cz_color = #{czColor,jdbcType=VARCHAR},
+      cz_price = #{czPrice,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.cn.bojue.pojo.Canzhuo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cz_no" jdbcType="VARCHAR" property="czNo" />
+    <result column="cz_name" jdbcType="VARCHAR" property="czName" />
+    <result column="cz_res" jdbcType="VARCHAR" property="czRes" />
+    <result column="cz_type" jdbcType="VARCHAR" property="czType" />
+    <result column="cz_spec" jdbcType="VARCHAR" property="czSpec" />
+    <result column="cz_num" jdbcType="INTEGER" property="czNum" />
+    <result column="cz_color" jdbcType="VARCHAR" property="czColor" />
+    <result column="cz_price" jdbcType="INTEGER" property="czPrice" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.cn.bojue.pojo.Canzhuo">
+    <result column="cz_des" jdbcType="LONGVARCHAR" property="czDes" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, cz_no, cz_name, cz_res, cz_type, cz_spec, cz_num, cz_color, cz_price
+  </sql>
+  <sql id="Blob_Column_List">
+    cz_des
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from canzhuo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from canzhuo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample">
+    delete from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.cn.bojue.pojo.Canzhuo">
+    insert into canzhuo (id, cz_no, cz_name, 
+      cz_res, cz_type, cz_spec, 
+      cz_num, cz_color, cz_price, 
+      cz_des)
+    values (#{id,jdbcType=INTEGER}, #{czNo,jdbcType=VARCHAR}, #{czName,jdbcType=VARCHAR}, 
+      #{czRes,jdbcType=VARCHAR}, #{czType,jdbcType=VARCHAR}, #{czSpec,jdbcType=VARCHAR}, 
+      #{czNum,jdbcType=INTEGER}, #{czColor,jdbcType=VARCHAR}, #{czPrice,jdbcType=INTEGER}, 
+      #{czDes,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.bojue.pojo.Canzhuo">
+    insert into canzhuo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="czNo != null">
+        cz_no,
+      </if>
+      <if test="czName != null">
+        cz_name,
+      </if>
+      <if test="czRes != null">
+        cz_res,
+      </if>
+      <if test="czType != null">
+        cz_type,
+      </if>
+      <if test="czSpec != null">
+        cz_spec,
+      </if>
+      <if test="czNum != null">
+        cz_num,
+      </if>
+      <if test="czColor != null">
+        cz_color,
+      </if>
+      <if test="czPrice != null">
+        cz_price,
+      </if>
+      <if test="czDes != null">
+        cz_des,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="czNo != null">
+        #{czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="czName != null">
+        #{czName,jdbcType=VARCHAR},
+      </if>
+      <if test="czRes != null">
+        #{czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="czType != null">
+        #{czType,jdbcType=VARCHAR},
+      </if>
+      <if test="czSpec != null">
+        #{czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="czNum != null">
+        #{czNum,jdbcType=INTEGER},
+      </if>
+      <if test="czColor != null">
+        #{czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="czPrice != null">
+        #{czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="czDes != null">
+        #{czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultType="java.lang.Integer">
+    select count(*) from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update canzhuo
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.czNo != null">
+        cz_no = #{record.czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czName != null">
+        cz_name = #{record.czName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czRes != null">
+        cz_res = #{record.czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czType != null">
+        cz_type = #{record.czType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czSpec != null">
+        cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czNum != null">
+        cz_num = #{record.czNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.czColor != null">
+        cz_color = #{record.czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czPrice != null">
+        cz_price = #{record.czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="record.czDes != null">
+        cz_des = #{record.czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update canzhuo
+    set id = #{record.id,jdbcType=INTEGER},
+      cz_no = #{record.czNo,jdbcType=VARCHAR},
+      cz_name = #{record.czName,jdbcType=VARCHAR},
+      cz_res = #{record.czRes,jdbcType=VARCHAR},
+      cz_type = #{record.czType,jdbcType=VARCHAR},
+      cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      cz_num = #{record.czNum,jdbcType=INTEGER},
+      cz_color = #{record.czColor,jdbcType=VARCHAR},
+      cz_price = #{record.czPrice,jdbcType=INTEGER},
+      cz_des = #{record.czDes,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update canzhuo
+    set id = #{record.id,jdbcType=INTEGER},
+      cz_no = #{record.czNo,jdbcType=VARCHAR},
+      cz_name = #{record.czName,jdbcType=VARCHAR},
+      cz_res = #{record.czRes,jdbcType=VARCHAR},
+      cz_type = #{record.czType,jdbcType=VARCHAR},
+      cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      cz_num = #{record.czNum,jdbcType=INTEGER},
+      cz_color = #{record.czColor,jdbcType=VARCHAR},
+      cz_price = #{record.czPrice,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    <set>
+      <if test="czNo != null">
+        cz_no = #{czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="czName != null">
+        cz_name = #{czName,jdbcType=VARCHAR},
+      </if>
+      <if test="czRes != null">
+        cz_res = #{czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="czType != null">
+        cz_type = #{czType,jdbcType=VARCHAR},
+      </if>
+      <if test="czSpec != null">
+        cz_spec = #{czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="czNum != null">
+        cz_num = #{czNum,jdbcType=INTEGER},
+      </if>
+      <if test="czColor != null">
+        cz_color = #{czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="czPrice != null">
+        cz_price = #{czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="czDes != null">
+        cz_des = #{czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    set cz_no = #{czNo,jdbcType=VARCHAR},
+      cz_name = #{czName,jdbcType=VARCHAR},
+      cz_res = #{czRes,jdbcType=VARCHAR},
+      cz_type = #{czType,jdbcType=VARCHAR},
+      cz_spec = #{czSpec,jdbcType=VARCHAR},
+      cz_num = #{czNum,jdbcType=INTEGER},
+      cz_color = #{czColor,jdbcType=VARCHAR},
+      cz_price = #{czPrice,jdbcType=INTEGER},
+      cz_des = #{czDes,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    set cz_no = #{czNo,jdbcType=VARCHAR},
+      cz_name = #{czName,jdbcType=VARCHAR},
+      cz_res = #{czRes,jdbcType=VARCHAR},
+      cz_type = #{czType,jdbcType=VARCHAR},
+      cz_spec = #{czSpec,jdbcType=VARCHAR},
+      cz_num = #{czNum,jdbcType=INTEGER},
+      cz_color = #{czColor,jdbcType=VARCHAR},
+      cz_price = #{czPrice,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.cn.bojue.pojo.Canzhuo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cz_no" jdbcType="VARCHAR" property="czNo" />
+    <result column="cz_name" jdbcType="VARCHAR" property="czName" />
+    <result column="cz_res" jdbcType="VARCHAR" property="czRes" />
+    <result column="cz_type" jdbcType="VARCHAR" property="czType" />
+    <result column="cz_spec" jdbcType="VARCHAR" property="czSpec" />
+    <result column="cz_num" jdbcType="INTEGER" property="czNum" />
+    <result column="cz_color" jdbcType="VARCHAR" property="czColor" />
+    <result column="cz_price" jdbcType="INTEGER" property="czPrice" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.cn.bojue.pojo.Canzhuo">
+    <result column="cz_des" jdbcType="LONGVARCHAR" property="czDes" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, cz_no, cz_name, cz_res, cz_type, cz_spec, cz_num, cz_color, cz_price
+  </sql>
+  <sql id="Blob_Column_List">
+    cz_des
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from canzhuo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from canzhuo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample">
+    delete from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.cn.bojue.pojo.Canzhuo">
+    insert into canzhuo (id, cz_no, cz_name, 
+      cz_res, cz_type, cz_spec, 
+      cz_num, cz_color, cz_price, 
+      cz_des)
+    values (#{id,jdbcType=INTEGER}, #{czNo,jdbcType=VARCHAR}, #{czName,jdbcType=VARCHAR}, 
+      #{czRes,jdbcType=VARCHAR}, #{czType,jdbcType=VARCHAR}, #{czSpec,jdbcType=VARCHAR}, 
+      #{czNum,jdbcType=INTEGER}, #{czColor,jdbcType=VARCHAR}, #{czPrice,jdbcType=INTEGER}, 
+      #{czDes,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.bojue.pojo.Canzhuo">
+    insert into canzhuo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="czNo != null">
+        cz_no,
+      </if>
+      <if test="czName != null">
+        cz_name,
+      </if>
+      <if test="czRes != null">
+        cz_res,
+      </if>
+      <if test="czType != null">
+        cz_type,
+      </if>
+      <if test="czSpec != null">
+        cz_spec,
+      </if>
+      <if test="czNum != null">
+        cz_num,
+      </if>
+      <if test="czColor != null">
+        cz_color,
+      </if>
+      <if test="czPrice != null">
+        cz_price,
+      </if>
+      <if test="czDes != null">
+        cz_des,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="czNo != null">
+        #{czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="czName != null">
+        #{czName,jdbcType=VARCHAR},
+      </if>
+      <if test="czRes != null">
+        #{czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="czType != null">
+        #{czType,jdbcType=VARCHAR},
+      </if>
+      <if test="czSpec != null">
+        #{czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="czNum != null">
+        #{czNum,jdbcType=INTEGER},
+      </if>
+      <if test="czColor != null">
+        #{czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="czPrice != null">
+        #{czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="czDes != null">
+        #{czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultType="java.lang.Integer">
+    select count(*) from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update canzhuo
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.czNo != null">
+        cz_no = #{record.czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czName != null">
+        cz_name = #{record.czName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czRes != null">
+        cz_res = #{record.czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czType != null">
+        cz_type = #{record.czType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czSpec != null">
+        cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czNum != null">
+        cz_num = #{record.czNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.czColor != null">
+        cz_color = #{record.czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czPrice != null">
+        cz_price = #{record.czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="record.czDes != null">
+        cz_des = #{record.czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update canzhuo
+    set id = #{record.id,jdbcType=INTEGER},
+      cz_no = #{record.czNo,jdbcType=VARCHAR},
+      cz_name = #{record.czName,jdbcType=VARCHAR},
+      cz_res = #{record.czRes,jdbcType=VARCHAR},
+      cz_type = #{record.czType,jdbcType=VARCHAR},
+      cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      cz_num = #{record.czNum,jdbcType=INTEGER},
+      cz_color = #{record.czColor,jdbcType=VARCHAR},
+      cz_price = #{record.czPrice,jdbcType=INTEGER},
+      cz_des = #{record.czDes,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update canzhuo
+    set id = #{record.id,jdbcType=INTEGER},
+      cz_no = #{record.czNo,jdbcType=VARCHAR},
+      cz_name = #{record.czName,jdbcType=VARCHAR},
+      cz_res = #{record.czRes,jdbcType=VARCHAR},
+      cz_type = #{record.czType,jdbcType=VARCHAR},
+      cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      cz_num = #{record.czNum,jdbcType=INTEGER},
+      cz_color = #{record.czColor,jdbcType=VARCHAR},
+      cz_price = #{record.czPrice,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    <set>
+      <if test="czNo != null">
+        cz_no = #{czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="czName != null">
+        cz_name = #{czName,jdbcType=VARCHAR},
+      </if>
+      <if test="czRes != null">
+        cz_res = #{czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="czType != null">
+        cz_type = #{czType,jdbcType=VARCHAR},
+      </if>
+      <if test="czSpec != null">
+        cz_spec = #{czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="czNum != null">
+        cz_num = #{czNum,jdbcType=INTEGER},
+      </if>
+      <if test="czColor != null">
+        cz_color = #{czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="czPrice != null">
+        cz_price = #{czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="czDes != null">
+        cz_des = #{czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    set cz_no = #{czNo,jdbcType=VARCHAR},
+      cz_name = #{czName,jdbcType=VARCHAR},
+      cz_res = #{czRes,jdbcType=VARCHAR},
+      cz_type = #{czType,jdbcType=VARCHAR},
+      cz_spec = #{czSpec,jdbcType=VARCHAR},
+      cz_num = #{czNum,jdbcType=INTEGER},
+      cz_color = #{czColor,jdbcType=VARCHAR},
+      cz_price = #{czPrice,jdbcType=INTEGER},
+      cz_des = #{czDes,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    set cz_no = #{czNo,jdbcType=VARCHAR},
+      cz_name = #{czName,jdbcType=VARCHAR},
+      cz_res = #{czRes,jdbcType=VARCHAR},
+      cz_type = #{czType,jdbcType=VARCHAR},
+      cz_spec = #{czSpec,jdbcType=VARCHAR},
+      cz_num = #{czNum,jdbcType=INTEGER},
+      cz_color = #{czColor,jdbcType=VARCHAR},
+      cz_price = #{czPrice,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.cn.bojue.pojo.Canzhuo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cz_no" jdbcType="VARCHAR" property="czNo" />
+    <result column="cz_name" jdbcType="VARCHAR" property="czName" />
+    <result column="cz_res" jdbcType="VARCHAR" property="czRes" />
+    <result column="cz_type" jdbcType="VARCHAR" property="czType" />
+    <result column="cz_spec" jdbcType="VARCHAR" property="czSpec" />
+    <result column="cz_num" jdbcType="INTEGER" property="czNum" />
+    <result column="cz_color" jdbcType="VARCHAR" property="czColor" />
+    <result column="cz_price" jdbcType="INTEGER" property="czPrice" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.cn.bojue.pojo.Canzhuo">
+    <result column="cz_des" jdbcType="LONGVARCHAR" property="czDes" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, cz_no, cz_name, cz_res, cz_type, cz_spec, cz_num, cz_color, cz_price
+  </sql>
+  <sql id="Blob_Column_List">
+    cz_des
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from canzhuo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from canzhuo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample">
+    delete from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.cn.bojue.pojo.Canzhuo">
+    insert into canzhuo (id, cz_no, cz_name, 
+      cz_res, cz_type, cz_spec, 
+      cz_num, cz_color, cz_price, 
+      cz_des)
+    values (#{id,jdbcType=INTEGER}, #{czNo,jdbcType=VARCHAR}, #{czName,jdbcType=VARCHAR}, 
+      #{czRes,jdbcType=VARCHAR}, #{czType,jdbcType=VARCHAR}, #{czSpec,jdbcType=VARCHAR}, 
+      #{czNum,jdbcType=INTEGER}, #{czColor,jdbcType=VARCHAR}, #{czPrice,jdbcType=INTEGER}, 
+      #{czDes,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.bojue.pojo.Canzhuo">
+    insert into canzhuo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="czNo != null">
+        cz_no,
+      </if>
+      <if test="czName != null">
+        cz_name,
+      </if>
+      <if test="czRes != null">
+        cz_res,
+      </if>
+      <if test="czType != null">
+        cz_type,
+      </if>
+      <if test="czSpec != null">
+        cz_spec,
+      </if>
+      <if test="czNum != null">
+        cz_num,
+      </if>
+      <if test="czColor != null">
+        cz_color,
+      </if>
+      <if test="czPrice != null">
+        cz_price,
+      </if>
+      <if test="czDes != null">
+        cz_des,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="czNo != null">
+        #{czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="czName != null">
+        #{czName,jdbcType=VARCHAR},
+      </if>
+      <if test="czRes != null">
+        #{czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="czType != null">
+        #{czType,jdbcType=VARCHAR},
+      </if>
+      <if test="czSpec != null">
+        #{czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="czNum != null">
+        #{czNum,jdbcType=INTEGER},
+      </if>
+      <if test="czColor != null">
+        #{czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="czPrice != null">
+        #{czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="czDes != null">
+        #{czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultType="java.lang.Integer">
+    select count(*) from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update canzhuo
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.czNo != null">
+        cz_no = #{record.czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czName != null">
+        cz_name = #{record.czName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czRes != null">
+        cz_res = #{record.czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czType != null">
+        cz_type = #{record.czType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czSpec != null">
+        cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czNum != null">
+        cz_num = #{record.czNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.czColor != null">
+        cz_color = #{record.czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czPrice != null">
+        cz_price = #{record.czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="record.czDes != null">
+        cz_des = #{record.czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update canzhuo
+    set id = #{record.id,jdbcType=INTEGER},
+      cz_no = #{record.czNo,jdbcType=VARCHAR},
+      cz_name = #{record.czName,jdbcType=VARCHAR},
+      cz_res = #{record.czRes,jdbcType=VARCHAR},
+      cz_type = #{record.czType,jdbcType=VARCHAR},
+      cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      cz_num = #{record.czNum,jdbcType=INTEGER},
+      cz_color = #{record.czColor,jdbcType=VARCHAR},
+      cz_price = #{record.czPrice,jdbcType=INTEGER},
+      cz_des = #{record.czDes,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update canzhuo
+    set id = #{record.id,jdbcType=INTEGER},
+      cz_no = #{record.czNo,jdbcType=VARCHAR},
+      cz_name = #{record.czName,jdbcType=VARCHAR},
+      cz_res = #{record.czRes,jdbcType=VARCHAR},
+      cz_type = #{record.czType,jdbcType=VARCHAR},
+      cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      cz_num = #{record.czNum,jdbcType=INTEGER},
+      cz_color = #{record.czColor,jdbcType=VARCHAR},
+      cz_price = #{record.czPrice,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    <set>
+      <if test="czNo != null">
+        cz_no = #{czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="czName != null">
+        cz_name = #{czName,jdbcType=VARCHAR},
+      </if>
+      <if test="czRes != null">
+        cz_res = #{czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="czType != null">
+        cz_type = #{czType,jdbcType=VARCHAR},
+      </if>
+      <if test="czSpec != null">
+        cz_spec = #{czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="czNum != null">
+        cz_num = #{czNum,jdbcType=INTEGER},
+      </if>
+      <if test="czColor != null">
+        cz_color = #{czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="czPrice != null">
+        cz_price = #{czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="czDes != null">
+        cz_des = #{czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    set cz_no = #{czNo,jdbcType=VARCHAR},
+      cz_name = #{czName,jdbcType=VARCHAR},
+      cz_res = #{czRes,jdbcType=VARCHAR},
+      cz_type = #{czType,jdbcType=VARCHAR},
+      cz_spec = #{czSpec,jdbcType=VARCHAR},
+      cz_num = #{czNum,jdbcType=INTEGER},
+      cz_color = #{czColor,jdbcType=VARCHAR},
+      cz_price = #{czPrice,jdbcType=INTEGER},
+      cz_des = #{czDes,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    set cz_no = #{czNo,jdbcType=VARCHAR},
+      cz_name = #{czName,jdbcType=VARCHAR},
+      cz_res = #{czRes,jdbcType=VARCHAR},
+      cz_type = #{czType,jdbcType=VARCHAR},
+      cz_spec = #{czSpec,jdbcType=VARCHAR},
+      cz_num = #{czNum,jdbcType=INTEGER},
+      cz_color = #{czColor,jdbcType=VARCHAR},
+      cz_price = #{czPrice,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.cn.bojue.pojo.Canzhuo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cz_no" jdbcType="VARCHAR" property="czNo" />
+    <result column="cz_name" jdbcType="VARCHAR" property="czName" />
+    <result column="cz_res" jdbcType="VARCHAR" property="czRes" />
+    <result column="cz_type" jdbcType="VARCHAR" property="czType" />
+    <result column="cz_spec" jdbcType="VARCHAR" property="czSpec" />
+    <result column="cz_num" jdbcType="INTEGER" property="czNum" />
+    <result column="cz_color" jdbcType="VARCHAR" property="czColor" />
+    <result column="cz_price" jdbcType="INTEGER" property="czPrice" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.cn.bojue.pojo.Canzhuo">
+    <result column="cz_des" jdbcType="LONGVARCHAR" property="czDes" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, cz_no, cz_name, cz_res, cz_type, cz_spec, cz_num, cz_color, cz_price
+  </sql>
+  <sql id="Blob_Column_List">
+    cz_des
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from canzhuo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from canzhuo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample">
+    delete from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.cn.bojue.pojo.Canzhuo">
+    insert into canzhuo (id, cz_no, cz_name, 
+      cz_res, cz_type, cz_spec, 
+      cz_num, cz_color, cz_price, 
+      cz_des)
+    values (#{id,jdbcType=INTEGER}, #{czNo,jdbcType=VARCHAR}, #{czName,jdbcType=VARCHAR}, 
+      #{czRes,jdbcType=VARCHAR}, #{czType,jdbcType=VARCHAR}, #{czSpec,jdbcType=VARCHAR}, 
+      #{czNum,jdbcType=INTEGER}, #{czColor,jdbcType=VARCHAR}, #{czPrice,jdbcType=INTEGER}, 
+      #{czDes,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.bojue.pojo.Canzhuo">
+    insert into canzhuo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="czNo != null">
+        cz_no,
+      </if>
+      <if test="czName != null">
+        cz_name,
+      </if>
+      <if test="czRes != null">
+        cz_res,
+      </if>
+      <if test="czType != null">
+        cz_type,
+      </if>
+      <if test="czSpec != null">
+        cz_spec,
+      </if>
+      <if test="czNum != null">
+        cz_num,
+      </if>
+      <if test="czColor != null">
+        cz_color,
+      </if>
+      <if test="czPrice != null">
+        cz_price,
+      </if>
+      <if test="czDes != null">
+        cz_des,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="czNo != null">
+        #{czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="czName != null">
+        #{czName,jdbcType=VARCHAR},
+      </if>
+      <if test="czRes != null">
+        #{czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="czType != null">
+        #{czType,jdbcType=VARCHAR},
+      </if>
+      <if test="czSpec != null">
+        #{czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="czNum != null">
+        #{czNum,jdbcType=INTEGER},
+      </if>
+      <if test="czColor != null">
+        #{czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="czPrice != null">
+        #{czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="czDes != null">
+        #{czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultType="java.lang.Integer">
+    select count(*) from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update canzhuo
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.czNo != null">
+        cz_no = #{record.czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czName != null">
+        cz_name = #{record.czName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czRes != null">
+        cz_res = #{record.czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czType != null">
+        cz_type = #{record.czType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czSpec != null">
+        cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czNum != null">
+        cz_num = #{record.czNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.czColor != null">
+        cz_color = #{record.czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czPrice != null">
+        cz_price = #{record.czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="record.czDes != null">
+        cz_des = #{record.czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update canzhuo
+    set id = #{record.id,jdbcType=INTEGER},
+      cz_no = #{record.czNo,jdbcType=VARCHAR},
+      cz_name = #{record.czName,jdbcType=VARCHAR},
+      cz_res = #{record.czRes,jdbcType=VARCHAR},
+      cz_type = #{record.czType,jdbcType=VARCHAR},
+      cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      cz_num = #{record.czNum,jdbcType=INTEGER},
+      cz_color = #{record.czColor,jdbcType=VARCHAR},
+      cz_price = #{record.czPrice,jdbcType=INTEGER},
+      cz_des = #{record.czDes,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update canzhuo
+    set id = #{record.id,jdbcType=INTEGER},
+      cz_no = #{record.czNo,jdbcType=VARCHAR},
+      cz_name = #{record.czName,jdbcType=VARCHAR},
+      cz_res = #{record.czRes,jdbcType=VARCHAR},
+      cz_type = #{record.czType,jdbcType=VARCHAR},
+      cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      cz_num = #{record.czNum,jdbcType=INTEGER},
+      cz_color = #{record.czColor,jdbcType=VARCHAR},
+      cz_price = #{record.czPrice,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    <set>
+      <if test="czNo != null">
+        cz_no = #{czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="czName != null">
+        cz_name = #{czName,jdbcType=VARCHAR},
+      </if>
+      <if test="czRes != null">
+        cz_res = #{czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="czType != null">
+        cz_type = #{czType,jdbcType=VARCHAR},
+      </if>
+      <if test="czSpec != null">
+        cz_spec = #{czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="czNum != null">
+        cz_num = #{czNum,jdbcType=INTEGER},
+      </if>
+      <if test="czColor != null">
+        cz_color = #{czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="czPrice != null">
+        cz_price = #{czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="czDes != null">
+        cz_des = #{czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    set cz_no = #{czNo,jdbcType=VARCHAR},
+      cz_name = #{czName,jdbcType=VARCHAR},
+      cz_res = #{czRes,jdbcType=VARCHAR},
+      cz_type = #{czType,jdbcType=VARCHAR},
+      cz_spec = #{czSpec,jdbcType=VARCHAR},
+      cz_num = #{czNum,jdbcType=INTEGER},
+      cz_color = #{czColor,jdbcType=VARCHAR},
+      cz_price = #{czPrice,jdbcType=INTEGER},
+      cz_des = #{czDes,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    set cz_no = #{czNo,jdbcType=VARCHAR},
+      cz_name = #{czName,jdbcType=VARCHAR},
+      cz_res = #{czRes,jdbcType=VARCHAR},
+      cz_type = #{czType,jdbcType=VARCHAR},
+      cz_spec = #{czSpec,jdbcType=VARCHAR},
+      cz_num = #{czNum,jdbcType=INTEGER},
+      cz_color = #{czColor,jdbcType=VARCHAR},
+      cz_price = #{czPrice,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.cn.bojue.pojo.Canzhuo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cz_no" jdbcType="VARCHAR" property="czNo" />
+    <result column="cz_name" jdbcType="VARCHAR" property="czName" />
+    <result column="cz_res" jdbcType="VARCHAR" property="czRes" />
+    <result column="cz_type" jdbcType="VARCHAR" property="czType" />
+    <result column="cz_spec" jdbcType="VARCHAR" property="czSpec" />
+    <result column="cz_num" jdbcType="INTEGER" property="czNum" />
+    <result column="cz_color" jdbcType="VARCHAR" property="czColor" />
+    <result column="cz_price" jdbcType="INTEGER" property="czPrice" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.cn.bojue.pojo.Canzhuo">
+    <result column="cz_des" jdbcType="LONGVARCHAR" property="czDes" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, cz_no, cz_name, cz_res, cz_type, cz_spec, cz_num, cz_color, cz_price
+  </sql>
+  <sql id="Blob_Column_List">
+    cz_des
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from canzhuo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from canzhuo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample">
+    delete from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.cn.bojue.pojo.Canzhuo">
+    insert into canzhuo (id, cz_no, cz_name, 
+      cz_res, cz_type, cz_spec, 
+      cz_num, cz_color, cz_price, 
+      cz_des)
+    values (#{id,jdbcType=INTEGER}, #{czNo,jdbcType=VARCHAR}, #{czName,jdbcType=VARCHAR}, 
+      #{czRes,jdbcType=VARCHAR}, #{czType,jdbcType=VARCHAR}, #{czSpec,jdbcType=VARCHAR}, 
+      #{czNum,jdbcType=INTEGER}, #{czColor,jdbcType=VARCHAR}, #{czPrice,jdbcType=INTEGER}, 
+      #{czDes,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.bojue.pojo.Canzhuo">
+    insert into canzhuo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="czNo != null">
+        cz_no,
+      </if>
+      <if test="czName != null">
+        cz_name,
+      </if>
+      <if test="czRes != null">
+        cz_res,
+      </if>
+      <if test="czType != null">
+        cz_type,
+      </if>
+      <if test="czSpec != null">
+        cz_spec,
+      </if>
+      <if test="czNum != null">
+        cz_num,
+      </if>
+      <if test="czColor != null">
+        cz_color,
+      </if>
+      <if test="czPrice != null">
+        cz_price,
+      </if>
+      <if test="czDes != null">
+        cz_des,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="czNo != null">
+        #{czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="czName != null">
+        #{czName,jdbcType=VARCHAR},
+      </if>
+      <if test="czRes != null">
+        #{czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="czType != null">
+        #{czType,jdbcType=VARCHAR},
+      </if>
+      <if test="czSpec != null">
+        #{czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="czNum != null">
+        #{czNum,jdbcType=INTEGER},
+      </if>
+      <if test="czColor != null">
+        #{czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="czPrice != null">
+        #{czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="czDes != null">
+        #{czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.cn.bojue.pojo.CanzhuoExample" resultType="java.lang.Integer">
+    select count(*) from canzhuo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update canzhuo
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.czNo != null">
+        cz_no = #{record.czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czName != null">
+        cz_name = #{record.czName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czRes != null">
+        cz_res = #{record.czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czType != null">
+        cz_type = #{record.czType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czSpec != null">
+        cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czNum != null">
+        cz_num = #{record.czNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.czColor != null">
+        cz_color = #{record.czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czPrice != null">
+        cz_price = #{record.czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="record.czDes != null">
+        cz_des = #{record.czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update canzhuo
+    set id = #{record.id,jdbcType=INTEGER},
+      cz_no = #{record.czNo,jdbcType=VARCHAR},
+      cz_name = #{record.czName,jdbcType=VARCHAR},
+      cz_res = #{record.czRes,jdbcType=VARCHAR},
+      cz_type = #{record.czType,jdbcType=VARCHAR},
+      cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      cz_num = #{record.czNum,jdbcType=INTEGER},
+      cz_color = #{record.czColor,jdbcType=VARCHAR},
+      cz_price = #{record.czPrice,jdbcType=INTEGER},
+      cz_des = #{record.czDes,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update canzhuo
+    set id = #{record.id,jdbcType=INTEGER},
+      cz_no = #{record.czNo,jdbcType=VARCHAR},
+      cz_name = #{record.czName,jdbcType=VARCHAR},
+      cz_res = #{record.czRes,jdbcType=VARCHAR},
+      cz_type = #{record.czType,jdbcType=VARCHAR},
+      cz_spec = #{record.czSpec,jdbcType=VARCHAR},
+      cz_num = #{record.czNum,jdbcType=INTEGER},
+      cz_color = #{record.czColor,jdbcType=VARCHAR},
+      cz_price = #{record.czPrice,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    <set>
+      <if test="czNo != null">
+        cz_no = #{czNo,jdbcType=VARCHAR},
+      </if>
+      <if test="czName != null">
+        cz_name = #{czName,jdbcType=VARCHAR},
+      </if>
+      <if test="czRes != null">
+        cz_res = #{czRes,jdbcType=VARCHAR},
+      </if>
+      <if test="czType != null">
+        cz_type = #{czType,jdbcType=VARCHAR},
+      </if>
+      <if test="czSpec != null">
+        cz_spec = #{czSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="czNum != null">
+        cz_num = #{czNum,jdbcType=INTEGER},
+      </if>
+      <if test="czColor != null">
+        cz_color = #{czColor,jdbcType=VARCHAR},
+      </if>
+      <if test="czPrice != null">
+        cz_price = #{czPrice,jdbcType=INTEGER},
+      </if>
+      <if test="czDes != null">
+        cz_des = #{czDes,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    set cz_no = #{czNo,jdbcType=VARCHAR},
+      cz_name = #{czName,jdbcType=VARCHAR},
+      cz_res = #{czRes,jdbcType=VARCHAR},
+      cz_type = #{czType,jdbcType=VARCHAR},
+      cz_spec = #{czSpec,jdbcType=VARCHAR},
+      cz_num = #{czNum,jdbcType=INTEGER},
+      cz_color = #{czColor,jdbcType=VARCHAR},
+      cz_price = #{czPrice,jdbcType=INTEGER},
+      cz_des = #{czDes,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.bojue.pojo.Canzhuo">
+    update canzhuo
+    set cz_no = #{czNo,jdbcType=VARCHAR},
+      cz_name = #{czName,jdbcType=VARCHAR},
+      cz_res = #{czRes,jdbcType=VARCHAR},
+      cz_type = #{czType,jdbcType=VARCHAR},
+      cz_spec = #{czSpec,jdbcType=VARCHAR},
+      cz_num = #{czNum,jdbcType=INTEGER},
+      cz_color = #{czColor,jdbcType=VARCHAR},
+      cz_price = #{czPrice,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
