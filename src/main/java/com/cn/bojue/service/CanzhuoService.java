@@ -10,4 +10,7 @@ import java.util.List;
 public interface CanzhuoService {
     Canzhuo selectByPrimaryKey(int id);
     List<Canzhuo> selectByType(String type);
+    List<Canzhuo> selectByKind(String kind);
+    List<Canzhuo> selectAll(int page);
+    int selectCount(String kind);
 }
