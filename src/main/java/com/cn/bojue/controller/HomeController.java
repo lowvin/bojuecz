@@ -30,7 +30,7 @@ public class HomeController {
     }
     @RequestMapping(value = "/getIndex", method = RequestMethod.GET)
     @ResponseBody
-    public Map  getIndex(Model model){
+    public Map  getIndex(){
         Map map = new HashMap();
         List<Canzhuo> list1 = canzhuoService.selectByType("dd");
         List<Canzhuo> list2 = canzhuoService.selectByType("sd");
@@ -40,10 +40,24 @@ public class HomeController {
     }
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView  index(){
-        return new ModelAndView("index");
+        return new ModelAndView("model");
     }
-    @RequestMapping(value = "/content", method = RequestMethod.GET)
-    public ModelAndView  content(){
-        return new ModelAndView("content");
+    @RequestMapping(value = "/con", method = RequestMethod.POST)
+    @ResponseBody
+    public Map con( String czKind,String page){
+        Map map = new HashMap();
+        List<Canzhuo> list = null;
+        int count = 0;
+        if(czKind.equals("0")){
+             list = canzhuoService.selectAll(Integer.valueOf(page));
+             count = canzhuoService.selectCount("");
+        }else{
+             list = canzhuoService.selectByKind(czKind);
+             count = canzhuoService.selectCount(czKind);
+        }
+
+        map.put("kind",list);
+        map.put("total",count);
+        return map;
     }
 }
