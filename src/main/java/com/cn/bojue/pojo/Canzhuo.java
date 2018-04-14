@@ -21,6 +21,16 @@ public class Canzhuo {
 
     private String czDes;
 
+    public String getCzKind() {
+        return czKind;
+    }
+
+    public void setCzKind(String czKind) {
+        this.czKind = czKind;
+    }
+
+    private String czKind;
+
     public Integer getId() {
         return id;
     }
