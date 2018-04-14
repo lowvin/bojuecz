@@ -9,4 +9,7 @@ public interface CanzhuoMapper {
 
     Canzhuo selectByPrimaryKey(Integer id);
     List<Canzhuo> selectByType(String type);
+    List<Canzhuo> selectByKind(String kind);
+    List<Canzhuo> selectAll(int page);
+    int selectCount(String kind);
 }
