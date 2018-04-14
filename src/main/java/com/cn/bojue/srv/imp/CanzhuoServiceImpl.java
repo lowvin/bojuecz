@@ -25,4 +25,20 @@ public class CanzhuoServiceImpl implements CanzhuoService {
         List<Canzhuo> list =  canzhuoMapper.selectByType(type);
         return list;
     }
+
+    public List<Canzhuo> selectByKind(String kind){
+        List<Canzhuo> list =  canzhuoMapper.selectByKind(kind);
+        return list;
+    }
+
+    public List<Canzhuo> selectAll(int start){
+        start = start*6;
+        List<Canzhuo> list =  canzhuoMapper.selectAll(start);
+        return list;
+    }
+
+    public int selectCount(String kind){
+        int count = canzhuoMapper.selectCount(kind);
+        return count;
+    }
 }
