@@ -604,7 +604,6 @@ a:-webkit-any-link {
 #services .lead,
 #services h1{
   color: #6f0a0a;
-  color: 30px;
   text-align: center;
 }
 
@@ -621,7 +620,7 @@ a:-webkit-any-link {
   margin: 10px 0;
 }
 
-.services-wrap .pull-left {
+.services-wrap .pull-left0 {
   margin-right: 20px;
 }
 
@@ -665,8 +664,9 @@ a:focus {
   height: 0px;
   width: 0px;
 }
-.media>.pull-left{
+.media>.pull-left0{
   margin-right: 20px;
+  float: left!important;
 }
 
 .media>.pull-right{

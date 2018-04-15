@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -7,8 +7,11 @@
     <meta name="author" content="">
     <title>首页</title>
     <script type="text/javascript" src="js/angularJS/angular.js"></script>
-<!--    <script type="text/javascript" src="js/angularJS/angular.min.js"></script>-->
+&lt;!&ndash;
     <script type="text/javascript" src="js/angularJS/angular-route.js"></script>
+&ndash;&gt;
+&lt;!&ndash;    <script type="text/javascript" src="js/angularJS/angular.min.js"></script>&ndash;&gt;
+    <script type="text/javascript" src="https://cdn.bootcss.com/angular-ui-router/0.4.2/angular-ui-router.js"></script>
     <script type="text/javascript" src="js/controller/index.js"></script>
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
@@ -19,6 +22,7 @@
     <link type="text/css" rel="stylesheet" href="css/all.css">
     <link type="text/css" rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/ico/bojue.png">
+    &lt;!&ndash;<base href="/">&ndash;&gt;
 </head>
 <body class="homepage" ng-app="index" ng-controller="myCtrl">
 <header id="header" data-ng-init="load()">
@@ -41,13 +45,13 @@
 								搜索
 							</button>
 						</span>
-                </div><!-- /input-group -->
+                </div>&lt;!&ndash; /input-group &ndash;&gt;
             </div>
             <div class="logreg">
                 <a href="/bojue/login"><span class="login">登录</span></a><span>|</span><a><span class="reg">注册</span></a>
             </div>
-        </div><!--/.container-->
-    </nav><!--/nav-->
+        </div>&lt;!&ndash;/.container&ndash;&gt;
+    </nav>&lt;!&ndash;/nav&ndash;&gt;
 </header>
 <banner>
     <div id="banner" class="collapse navbar-collapse">
@@ -82,7 +86,7 @@
                         </div>
                     </div>
                 </div>
-            </div><!--/.item-->
+            </div>&lt;!&ndash;/.item&ndash;&gt;
 
             <div class="item" style="background-image: url(images/canz/timg03.jpg)">
                 <div class="container">
@@ -95,7 +99,7 @@
                         </div>
                     </div>
                 </div>
-            </div><!--/.item-->
+            </div>&lt;!&ndash;/.item&ndash;&gt;
 
             <div class="item" style="background-image: url(images/canz/timg01.jpg)">
                 <div class="container">
@@ -108,16 +112,16 @@
                         </div>
                     </div>
                 </div>
-            </div><!--/.item-->
-        </div><!--/.carousel-inner-->
-    </div><!--/.carousel-->
+            </div>&lt;!&ndash;/.item&ndash;&gt;
+        </div>&lt;!&ndash;/.carousel-inner&ndash;&gt;
+    </div>&lt;!&ndash;/.carousel&ndash;&gt;
     <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
         <i class="fa fa-chevron-left"></i>
     </a>
     <a class="next hidden-xs" href="#main-slider" data-slide="next">
         <i class="fa fa-chevron-right"></i>
     </a>
-</section><!--/#main-slider-->
+</section>&lt;!&ndash;/#main-slider&ndash;&gt;-->
 
 <section id="feature1" class="featop">
     <div class="container">
@@ -126,7 +130,7 @@
         </div>
         <div class="linecen">
             <span></span>
-            <a href="/bojue/content" class="more">
+            <a class="more" ui-sref="/cont({id:0,page:0})"> <!-- target="_blank" ui-sref=".content"-->
                 <img src="images/icos/more.gif">
             </a>
         </div>
@@ -273,7 +277,7 @@
 
             <div class="col-sm-6 col-md-4">
                 <div class="media services-wrap wow fadeInDown">
-                    <div class="pull-left">
+                    <div class="pull-left0">
                         <img class="img-responsive" src="images/services/services1.png">
                     </div>
                     <div class="media-body">
@@ -285,7 +289,7 @@
 
             <div class="col-sm-6 col-md-4">
                 <div class="media services-wrap wow fadeInDown">
-                    <div class="pull-left">
+                    <div class="pull-left0">
                         <img class="img-responsive" src="images/services/services2.png">
                     </div>
                     <div class="media-body">
@@ -297,7 +301,7 @@
 
             <div class="col-sm-6 col-md-4">
                 <div class="media services-wrap wow fadeInDown">
-                    <div class="pull-left">
+                    <div class="pull-left0">
                         <img class="img-responsive" src="images/services/services3.png">
                     </div>
                     <div class="media-body">
@@ -309,6 +313,7 @@
         </div><!--/.row-->
     </div><!--/.container-->
 </section><!--/#services-->
+<!--
 
 <footer id="footer" class="midnight-blue">
     <div class="container">
@@ -345,15 +350,16 @@
             </div>
         </div>
     </div>
-</footer><!--/#footer-->
-<!--qq聊天代码部分begin-->
+</footer>&lt;!&ndash;/#footer&ndash;&gt;
+<div data-ui-view></div>
+&lt;!&ndash;qq聊天代码部分begin&ndash;&gt;
 <div class="izl-rmenu">
     <a class="consult" target="_blank"><div class="phone" style="display:none;">13552320980</div></a>
     <a class="cart"><div class="pic"></div></a>
     <a href="javascript:void(0)" class="btn_top" style="display: block;"></a>
 </div>
 <a target="_blank"  href="http://wpa.qq.com/msgrd?v=3&uin=1196369615&site=qq&menu=yes" id="udesk-feedback-tab" class="udesk-feedback-tab-left" style="display: block; background-color: black;"></a>
-<!--qq聊天代码部分end-->
+&lt;!&ndash;qq聊天代码部分end&ndash;&gt;
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
@@ -361,4 +367,4 @@
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/wow.min.js"></script>
 </body>
-</html>
+</html>-->

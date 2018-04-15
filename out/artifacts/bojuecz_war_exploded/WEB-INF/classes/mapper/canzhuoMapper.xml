@@ -11,6 +11,7 @@
         <result column="cz_num" jdbcType="INTEGER" property="czNum" />
         <result column="cz_color" jdbcType="VARCHAR" property="czColor" />
         <result column="cz_price" jdbcType="INTEGER" property="czPrice" />
+        <result column="cz_kind" jdbcType="VARCHAR" property="czKind" />
     </resultMap>
     <sql id="Base_Column_List">
         id, cz_no, cz_name, cz_res, cz_type, cz_spec, cz_num, cz_color, cz_price
@@ -29,5 +30,27 @@
         *
         FROM canzhuo
         WHERE cz_type = #{type,jdbcType = VARCHAR}
+    </select>
+    <select id="selectByKind" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        *
+        FROM canzhuo
+        WHERE cz_kind = #{kind,jdbcType = VARCHAR}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        *
+        FROM canzhuo
+        LIMIT #{start,jdbcType = INTEGER},6
+    </select>
+    <select id="selectCount" resultType="Integer" parameterType="java.lang.String">
+        SELECT
+        count(*)
+        FROM canzhuo
+        <where>
+        <if test="_parameter!=''and _parameter!=null">
+        AND cz_kind = #{_parameter}
+        </if>
+        </where>
     </select>
 </mapper>

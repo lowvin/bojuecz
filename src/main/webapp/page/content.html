@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>首页</title>
+    <title>{{title}}</title>
     <script type="text/javascript" src="js/angularJS/angular.js"></script>
-    <script type="text/javascript" src="js/controller/content.js"></script>
+    <script type="text/javascript" src="js/controller/index.js"></script>
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
     <link type="text/css" rel="stylesheet" href="css/animate.min.css">
@@ -19,7 +19,7 @@
 
     <link rel="shortcut icon" href="images/ico/bojue.png">
 </head>
-<body class="homepage" ng-app="content" ng-controller="cont">
+<body class="homepage" ng-controller="cont">
 	<header id="header" data-ng-init="load()">
 		<nav class="navbar navbar-inverse" role="banner">
             <div class="container">
@@ -40,18 +40,18 @@
 								搜索
 							</button>
 						</span>
-					</div><!-- /input-group -->
+					</div>&lt;!&ndash; /input-group &ndash;&gt;
 				</div>
 				<div class="logreg">
 					<a><span class="login">登录</span></a><span>|</span><a><span class="reg">注册</span></a>
 				</div>
-            </div><!--/.container-->
-        </nav><!--/nav-->
+            </div>&lt;!&ndash;/.container&ndash;&gt;
+        </nav>&lt;!&ndash;/nav&ndash;&gt;
 	</header>
 	<banner>
 	    <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.html">首页</a></li>
+                <li class="active"><a href="index.html">{{title}}</a></li>
                 <li><a href="about-us.html">电动餐桌</a></li>
                 <li><a href="services.html">手动餐桌</a></li>
                 <li><a href="portfolio.html">餐桌配件</a></li>
@@ -81,7 +81,7 @@
                             </div>
                         </div>
                     </div>
-                </div><!--/.item-->
+                </div>&lt;!&ndash;/.item&ndash;&gt;
 
                 <div class="item" style="background-image: url(images/canz/timg.jpg)">
                     <div class="container">
@@ -94,7 +94,7 @@
                             </div>
                         </div>
                     </div>
-                </div><!--/.item-->
+                </div>&lt;!&ndash;/.item&ndash;&gt;
 
                 <div class="item" style="background-image: url(images/canz/timg03.jpg)">
                     <div class="container">
@@ -107,16 +107,16 @@
                             </div>
                         </div>
                     </div>
-                </div><!--/.item-->
-            </div><!--/.carousel-inner-->
-        </div><!--/.carousel-->
+                </div>&lt;!&ndash;/.item&ndash;&gt;
+            </div>&lt;!&ndash;/.carousel-inner&ndash;&gt;
+        </div>&lt;!&ndash;/.carousel&ndash;&gt;
         <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
             <i class="fa fa-chevron-left"></i>
         </a>
         <a class="next hidden-xs" href="#main-slider" data-slide="next">
             <i class="fa fa-chevron-right"></i>
         </a>
-    </section><!--/#main-slider-->
+    </section>&lt;!&ndash;/#main-slider&ndash;&gt;-->
     <section>
         <div class="typecon">
             <span class=" type col-md-12">产品类别</span>
@@ -129,6 +129,7 @@
                     <p>当前位置：<a>首页</a>&nbsp&gt&nbsp豪华实木电动餐桌</p>
                 </div>
             </div>
+        </div>
     </section>
     <section id="content">
         <div class="container">
@@ -138,81 +139,27 @@
                         <div class="media">
                             <div class="parrent pull-left">
                                 <ul class="nav nav-tabs nav-stacked">
-                                    <li class=""><a href="#tab1" data-toggle="tab" class="analistic-01">豪华实木电动餐桌</a></li>
-                                    <li class="active"><a href="#tab2" data-toggle="tab" class="analistic-02">豪华电动火锅餐桌</a></li>
-                                    <li class=""><a href="#tab3" data-toggle="tab" class="tehnical">豪华实木手动餐桌</a></li>
-                                    <li class=""><a href="#tab4" data-toggle="tab" class="tehnical">豪华手动火锅餐桌</a></li>
+                                    <li ng-class="{active: currentId == 0}"><a ui-sref="/cont({id:0,page:0})">全部餐桌产品</a></li>
+                                    <li ng-class="{active: currentId == 1}"><a ui-sref="/cont({id:1,page:0})">豪华实木电动餐桌</a></li>
+                                    <li ng-class="{active: currentId == 2}"><a ui-sref="/cont({id:2,page:0})">豪华电动火锅餐桌</a></li>
+                                    <li ng-class="{active: currentId == 3}"><a ui-sref="/cont({id:3,page:0})">豪华实木手动餐桌</a></li>
+                                    <li ng-class="{active: currentId == 4}"><a ui-sref="/cont({id:4,page:0})">豪华手动火锅餐桌</a></li>
                                 </ul>
                             </div>
-                            <div class="content">
+                            <div class="content" ng-repeat="a in kind">
                                 <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                                     <div class="feature-wrap">
-                                        <a><img class="img-responsive" src="images/canzhuo/A-062.png"/></a>
+                                        <a><img class="img-responsive" src="images/canzhuo/{{a.czNo}}.png"/></a>
                                         <div class="bianhao">
-                                            <a>WT-025# 锦绣中华</a>
+                                            <a>{{a.czNo}}# {{a.czName}}</a>
                                         </div>
-                                        <div class="miaoshu">
-                                            <span>全橡木纯手工雕花 自动宴会桌</span>
-                                        </div>
-                                    </div>
-                                </div><!--/.col-md-4-->
-                                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                                    <div class="feature-wrap">
-                                        <a><img class="img-responsive" src="images/canzhuo/A-062.png"/></a>
-                                        <div class="bianhao">
-                                            <a>WT-025# 锦绣中华</a>
-                                        </div>
-                                        <div class="miaoshu">
-                                            <span>全橡木纯手工雕花 自动宴会桌</span>
-                                        </div>
-                                    </div>
-                                </div><!--/.col-md-4-->
-                                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                                    <div class="feature-wrap">
-                                        <a><img class="img-responsive" src="images/canzhuo/A-062.png"/></a>
-                                        <div class="bianhao">
-                                            <a>WT-025# 锦绣中华</a>
-                                        </div>
-                                        <div class="miaoshu">
-                                            <span>全橡木纯手工雕花 自动宴会桌</span>
-                                        </div>
-                                    </div>
-                                </div><!--/.col-md-4-->
-                                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                                    <div class="feature-wrap">
-                                        <a><img class="img-responsive" src="images/canzhuo/A-062.png"/></a>
-                                        <div class="bianhao">
-                                            <a>WT-025# 锦绣中华</a>
-                                        </div>
-                                        <div class="miaoshu">
-                                            <span>全橡木纯手工雕花 自动宴会桌</span>
-                                        </div>
-                                    </div>
-                                </div><!--/.col-md-4-->
-                                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                                    <div class="feature-wrap">
-                                        <a><img class="img-responsive" src="images/canzhuo/A-062.png"/></a>
-                                        <div class="bianhao">
-                                            <a>WT-025# 锦绣中华</a>
-                                        </div>
-                                        <div class="miaoshu">
-                                            <span>全橡木纯手工雕花 自动宴会桌</span>
-                                        </div>
-                                    </div>
-                                </div><!--/.col-md-4-->
-                                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                                    <div class="feature-wrap">
-                                        <a><img class="img-responsive" src="images/canzhuo/A-062.png"/></a>
-                                        <div class="bianhao">
-                                            <a>WT-025# 锦绣中华</a>
-                                        </div>
-                                        <div class="miaoshu">
-                                            <span>全橡木纯手工雕花 自动宴会桌</span>
+                                        <div class="jianshu">
+                                            <span>{{a.czRes}}</span>
                                         </div>
                                     </div>
                                 </div><!--/.col-md-4-->
                             </div>
-                            <ul class="pagination">
+                            <!--<ul class="pagination">
                                 <li><a href="#">上一页</a></li>
                                 <li class="active"><a href="#">1</a></li>
                                 <li><a href="#">2</a></li>
@@ -220,13 +167,19 @@
                                 <li><a href="#">4</a></li>
                                 <li><a href="#">5</a></li>
                                 <li><a href="#">下一页</a></li>
-                            </ul>
+                            </ul>-->
+                            <!-- 分页控件指令 ，可以是元素 或者 属性 -->
+                            <ul uib-pagination total-items="totalItems"
+                                items-per-page = "perPage"
+                                ng-model="currentPage" ng-change="pageChanged()"
+                                previous-text="上一页" next-text="下一页"></ul>
                         </div> <!--/.media-->
                     </div><!--/.tab-wrap-->
                 </div><!--/.col-sm-6-->
             </div><!--/.row-->
         </div><!--/.container-->
     </section><!--/#content-->
+<!--
     <footer id="footer" class="midnight-blue">
         <div class="container">
             <div class="row">
@@ -262,14 +215,7 @@
                 </div>
             </div>
         </div>
-    </footer><!--/#footer-->
-    <script>
-        var app = angular.module('myApp', []);
-        app.controller('myCtrl',['$scope', function($scope){  
-            $scope.load = function (){
-            }
-        }]);
-    </script>
+    </footer>&lt;!&ndash;/#footer&ndash;&gt;
 	<script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
@@ -277,4 +223,4 @@
     <script src="js/main.js"></script>
     <script src="js/wow.min.js"></script>
 </body>
-</html>
+</html>-->
